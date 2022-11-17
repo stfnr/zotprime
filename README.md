@@ -59,7 +59,8 @@ For [m|l|w]: m=Mac, w=Windows, l=Linux
 $ cd client
 $ ./config.sh
 $ cd zotero-client
-$ npm install
+$ npm install --legacy-peer-deps
+$ export NODE_OPTIONS=--openssl-legacy-provider
 $ npm run build
 $ cd ../zotero-standalone-build
 $ ./fetch_xulrunner.sh -p [m|l|w]
