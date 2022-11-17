@@ -159,7 +159,8 @@ CREATE TABLE `keyPermissions` (
   `libraryID` int(10) unsigned NOT NULL,
   `permission` enum('library','notes','write') NOT NULL,
   `granted` tinyint(1) unsigned NOT NULL,
-  PRIMARY KEY (`keyID`,`libraryID`,`permission`)
+  PRIMARY KEY (`keyID`,`libraryID`,`permission`),
+  KEY `libraryID` (`libraryID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -181,11 +182,11 @@ CREATE TABLE `keys` (
 CREATE TABLE `libraries` (
   `libraryID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `libraryType` enum('user','group','publications') NOT NULL,
-  `lastUpdated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `version` int(10) unsigned NOT NULL DEFAULT '0',
+  `hasData` TINYINT(1) NOT NULL DEFAULT '0',
   `shardID` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`libraryID`),
-  KEY `shardID` (`shardID`)
+  KEY `shardID` (`shardID`),
+  KEY `hasData` (`hasData`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

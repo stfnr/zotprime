@@ -219,7 +219,8 @@ CREATE TABLE `items` (
   PRIMARY KEY (`itemID`),
   UNIQUE KEY `key` (`libraryID`,`key`),
   KEY `itemTypeID` (`itemTypeID`),
-  KEY `serverDateModified` (`serverDateModified`)
+  KEY `serverDateModified` (`serverDateModified`),
+  KEY `libraryVersion` (`libraryID`, `version`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
@@ -286,7 +287,7 @@ CREATE TABLE `savedSearches` (
 
 CREATE TABLE `settings` (
   `libraryID` int(10) unsigned NOT NULL,
-  `name` varchar(35) NOT NULL,
+  `name` varchar(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `value` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `version` int(10) unsigned NOT NULL,
   `lastUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
