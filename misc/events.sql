@@ -1,4 +1,4 @@
-DROP EVENT purgeOldKeys;
+DROP EVENT IF EXISTS purgeOldKeys;
 
 delimiter |
 
