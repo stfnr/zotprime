@@ -31,6 +31,7 @@ chown -R ${RUN_USER}:${RUN_GROUP} /var/log/apache2
 chmod 777 /var/www/zotero/tmp
 
 # Composer
+git config --global --add safe.directory '*'
 cd /var/www/zotero && composer install
 
 # Start Apache2
